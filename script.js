@@ -1,4 +1,3 @@
-
 const inputElement = document.getElementById('title')
 const createBtn = document.getElementById('create')
 const listElement = document.getElementById('list')
@@ -21,7 +20,6 @@ function render(){
     for(let i = 0; i < notes.length; i++){
      listElement.insertAdjacentHTML('beforeend' ,getNoteTemplate(notes[i] , i ))
     }    
-
 }
 render()
 
@@ -67,5 +65,19 @@ function getNoteTemplate(note , index){
     `
 }
 
+inputElement.addEventListener('change' , filterContacts())
 
+function filterContacts() {
+    let searchText = inputElement.value.toLowerCase();
+    if (searchText === '') {
+        notes;
+    } else {
+        notes = notes.filter(contact => {
+            return contact.title.toLowerCase().includes(searchText);
+        });
+    }
+    
+    render();
+    console.log(666)
+}
 
